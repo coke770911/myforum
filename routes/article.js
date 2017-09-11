@@ -4,11 +4,18 @@ var model = require('../models/m_article');
 
 /*文章列表. */
 router.get('/', function(req, res, next) {
-    //res.render('article/article', { title: '文章列表' });
-    res.send('全部文章');
+    var data = {};
+    model.Article.findAll(
+        {
+            attributes: ['id','articleTitle', 'articleContent','updatedAt']
+        }).then(article => {
+        data = JSON.stringify(article)
+    });
+    res.render('article/article', { title: '文章列表' ,item:data});
 });
 
 router.get('/:id',function(req, res, next) {
+    console.dir(req.params.id);
     res.send('文章內容');
 });
 

@@ -1,14 +1,17 @@
 var config = {
-    db:"host",
+    dbname:"dbhost",
     username:"root",
     password:"root",
-    dialect: 'sqlite',
-    pool: {
-        max: 5,
-        min: 0,
-        idle: 10000
-    },
-    storage: '../db.sqlite3'
+    optino: {
+        host: 'localhost',
+        dialect: 'sqlite',
+        pool: {
+            max: 5,
+            min: 0,
+            idle: 10000
+        },
+        storage: 'db.sqlite',
+        logging: false
+    }
 }
-
 module.exports = config;

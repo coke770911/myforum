@@ -1,7 +1,7 @@
 var config = require('../models/config');
 var Sequelize = require('sequelize');
 
-const sequelize = new Sequelize(config.db,config.username,config.password,config);
+const sequelize = new Sequelize(config.dbname,config.username,config.password,config.optino);
 
 sequelize
 .authenticate()
@@ -14,16 +14,22 @@ sequelize
 
 const Article = sequelize.define('article', {
     articleTitle: {type: Sequelize.STRING},
-    articleContent: {type: Sequelize.STRING}
+    articleContent: {type: Sequelize.STRING},
 });
 
-// force: true will drop the table if it already exists
-Article.sync({force: true}).then(() => {
+exports.Article = Article;
+/*
+// force: true 
+Article.sync().then(() => {
   // Table created
     return Article.create({
         articleTitle: '第一篇文章',
         articleContent: '適用ORM快速建立資料表'
     });
 });
-
-//console.dir(Article.findAll()
+*/
+/*
+Article.findAll().then(article => {
+  console.log(article)
+})
+*/

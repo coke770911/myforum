@@ -3,3 +3,6 @@ extends ../layout
 block content
     h1 文章列表
     p Welcome to #{title}
+    each item in rows
+        label= item.articleTitle
+        a(href='/') #{ item.id}
